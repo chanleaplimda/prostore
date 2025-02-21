@@ -1,9 +1,12 @@
 import React from 'react';
-import {Button} from "@/components/ui/button";
+import ProductList from "@/components/shared/product/product-list";
+import {getLatestProduct} from "@/lib/action/product.actions";
 
-const Homepage = () => {
+
+const Homepage = async () => {
+    const latestProduct = await getLatestProduct();
     return (
-        <Button>Button</Button>
+        <ProductList data={latestProduct} title="New Arrival" limit={4}></ProductList>
     );
 };
 

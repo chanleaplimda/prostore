@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import Image from "next/image";
-import {APP_NAME} from "@/lib/constraints";
+import {APP_NAME} from "../lib/constant";
 import {Button} from "@/components/ui/button";
 
 const NotFoundPage = () => {

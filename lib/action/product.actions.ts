@@ -1,6 +1,6 @@
 'use server'
 import {convertToPlainObject} from "@/lib/utils";
-import {LATEST_PRODUCT_LIMIT} from "@/lib/constraints";
+import {LATEST_PRODUCT_LIMIT} from "../constant";
 import {prisma} from "@/db/prisma";
 
 //Get Latest Product

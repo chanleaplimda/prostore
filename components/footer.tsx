@@ -1,4 +1,4 @@
-import { APP_NAME } from "@/lib/constraints";
+import { APP_NAME } from "../lib/constant";
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();

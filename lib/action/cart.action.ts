@@ -127,7 +127,7 @@ export async function getCartItems() {
     });
 }
 
-export async function removeItemFromCart(productId: String) {
+export async function removeItemFromCart(productId: string) {
     try {
         //Check for cart cookie
         const sessionCartId = (await cookies()).get('sessionCartId')?.value;

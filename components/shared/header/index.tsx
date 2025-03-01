@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import {APP_NAME} from "../../../lib/constant";
+import {APP_NAME} from "@/lib/constant";
 import Menu from "@/components/shared/header/menu";
 
 const Header = () => {

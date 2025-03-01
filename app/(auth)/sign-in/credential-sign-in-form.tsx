@@ -8,12 +8,15 @@ import Link from "next/link";
 import {signInWithCredential} from "@/lib/action/user.action";
 import {useFormStatus} from "react-dom";
 import {useSearchParams} from "next/navigation";
+import {Eye, EyeOff} from "lucide-react";
 
 const CredentialSignInForm = () => {
     const [data, action] = useActionState(signInWithCredential, {
         success: false,
         message: ''
     })
+    const [isShowPassword, setIsShowPassword] = React.useState(false);
+
 
     const searchParams = useSearchParams();
     const callbackUrl = searchParams.get('callbackUrl') || '/';
@@ -37,10 +40,18 @@ const CredentialSignInForm = () => {
                     <Input type="email" name="email" id="email" autoComplete="email" required
                            defaultValue={signInDefaultValues.email}/>
                 </div>
-                <div>
+                <div className='relative'>
                     <Label htmlFor="password">Password</Label>
-                    <Input type="password" name="password" id="password" autoComplete="password" required
-                           defaultValue={signInDefaultValues.password}/>
+                    <div className='relative'>
+                        <Input type={isShowPassword ? "text" : "password"} name="password" id="password"
+                               autoComplete="password" required
+                               defaultValue={signInDefaultValues.password}/>
+                        <Button type="button" variant='ghost' size='icon'
+                                className='absolute right-0 top-1/2 -translate-y-1/2 h-full'
+                                onClick={() => setIsShowPassword(!isShowPassword)}>
+                            {isShowPassword ? (<Eye/>) : (<EyeOff/>)}
+                        </Button>
+                    </div>
 
                 </div>
                 <div className='w-full'>

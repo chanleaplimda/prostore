@@ -1,9 +1,10 @@
 import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import "../assets/styles/globals.css";
-import {APP_DESCRIPTION, APP_NAME, APP_SERVERURL} from "../lib/constant";
+import {APP_DESCRIPTION, APP_NAME, APP_SERVERURL} from "@/lib/constant";
 import React from "react";
 import {ThemeProvider} from "next-themes";
+import {Toaster} from "@/components/ui/sonner";
 
 const inter = Inter({subsets: ['latin']});
 
@@ -31,8 +32,8 @@ export default function RootLayout({
                        disableTransitionOnChange
         >
             {children}
+            <Toaster/>
         </ThemeProvider>
-
         </body>
         </html>
     );

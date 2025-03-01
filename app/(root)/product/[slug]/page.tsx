@@ -4,13 +4,13 @@ import {notFound} from "next/navigation";
 import ProductPrice from "@/components/shared/product/product-price";
 import {Card, CardContent} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
-import {Button} from "@/components/ui/button";
-import {Plus} from "lucide-react";
 import ProductImages from "@/components/shared/product/product-images";
+import AddToCart from "@/components/shared/product/add-to-cart";
+import {getCartItems} from "@/lib/action/cart.action";
 
 const ProductDetailPage = async (props: { params: Promise<{ slug: string }> }) => {
     const {slug} = await props.params;
-
+    const cart = await getCartItems()
     const product = await getProductBySlug(slug);
     if (!product) notFound();
     return (
@@ -51,7 +51,16 @@ const ProductDetailPage = async (props: { params: Promise<{ slug: string }> }) =
                                         <Badge variant={"destructive"}>Out of stock</Badge>)}</div>
                                 </div>
                                 {product.stock > 0 && (<div className='flex-center'>
-                                    <Button className='w-full'><Plus/> Add to cart</Button>
+                                    <AddToCart
+                                        cart={cart}
+                                        item={{
+                                            productId: product.id,
+                                            name: product.name,
+                                            slug: product.slug,
+                                            price: product.price,
+                                            qty: 1,
+                                            image: product.images![0]
+                                        }}/>
                                 </div>)}
                             </CardContent>
                         </Card>
